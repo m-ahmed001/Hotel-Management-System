@@ -1,29 +1,19 @@
 package com.hotelbooking;
 
 /**
- * Enum representing the type of room.
+ * Room types as an enum with default costs.
  */
+public enum RoomType {
+    SINGLE(100.0),
+    DOUBLE(150.0),
+    SUITE(300.0);
 
-
-public class RoomType {
-
-    private final String kind;
     private final double cost;
 
-    public RoomType(String kind, double cost) {
-        if (kind == null || kind.isBlank()) {
-            throw new IllegalArgumentException("Room kind required");
-        }
-        if (cost <= 0) {
-            throw new IllegalArgumentException("Cost must be positive");
-        }
-
-        this.kind = kind;
+    RoomType(double cost) {
+        if (cost <= 0) throw new IllegalArgumentException("Cost must be positive");
         this.cost = cost;
     }
-     public String getKind() {
-    return kind;
-}
 
     public double getCost() {
         return cost;

@@ -38,111 +38,49 @@ mvn test
 ```bash
 mvn exec:java -Dexec.mainClass="com.hotelbooking.Main"
 ```
+# Hotel Booking System
 
-## Project Structure
+This project implements a small hotel booking domain following the provided UML and assignment requirements: clean code, defensive programming, and thorough unit tests.
 
-```
-src/
-├── main/java/com/hotelbooking/
-│   ├── Booking.java
-│   ├── BookingStatus.java
-│   ├── Customer.java
-│   ├── Hotel.java
-│   ├── Main.java
-│   ├── Room.java
-│   └── RoomType.java
-└── test/java/com/hotelbooking/
-    ├── BookingTest.java
-    ├── CustomerTest.java
-    ├── HotelTest.java
-    └── RoomTest.java
-```
+## Overview
 
-## Design Principles Applied
+Main domain types:
+- `Hotel` — manages rooms and bookings
+- `Room` — room number, type and availability
+- `RoomType` — enum (`SINGLE`, `DOUBLE`, `SUITE`) with default costs
+- `Customer` — represents a customer
+- `Booking` — reservation with check-in/check-out and status
+- `BookingStatus` — enum (`PENDING`, `CONFIRMED`, `CANCELLED`)
 
-### Object-Oriented Design
-- **Encapsulation**: Private fields with public getters/setters where appropriate
-- **Inheritance**: Not applicable in this simple model
-- **Polymorphism**: Not applicable in this simple model
-- **Abstraction**: Clear separation of concerns between classes
+## Build & Run
 
-### Clean Code Practices
-- Meaningful class, method, and variable names
-- Small, focused methods
-- Single Responsibility Principle
-- DRY (Don't Repeat Yourself)
+Prerequisites: Java 11+, Maven 3.6+
 
-### Defensive Programming
-- Input validation in constructors and methods
-- Null checks with descriptive error messages
-- Illegal state prevention
-- Exception handling with appropriate exception types
-
-### Testing Strategy
-- Unit tests for all domain classes
-- Parameterized tests for boundary conditions
-- AAA (Arrange-Act-Assert) pattern
-- Tests for normal cases, edge cases, and invalid inputs
-- High test coverage
-
-## UML Diagram
-
-The system is based on the following UML class diagram:
-
-```
-+----------------+       +-----------------+
-|     Hotel      |       |     Customer    |
-+----------------+       +-----------------+
-| - name: String |       | - name: String  |
-| - location: String|    | - email: String |
-| - rooms: List<Room>|   | - phone: String |
-| - bookings: List<Booking>| - bookings: List<Booking> |
-+----------------+       +-----------------+
-| + addRoom()    |       | + addBooking()  |
-| + removeRoom() |       +-----------------+
-| + getAvailableRooms()|
-| + bookRoom()   |
-+----------------+
-
-          |                    |
-          |                    |
-          v                    v
-
-+----------------+       +-----------------+
-|     Room       |       |    Booking      |
-+----------------+       +-----------------+
-| - roomNumber: int|     | - customer: Customer|
-| - type: RoomType|      | - room: Room    |
-| - price: double |      | - checkInDate: LocalDate|
-| - isAvailable: boolean| | - checkOutDate: LocalDate|
-+----------------+       | - status: BookingStatus|
-| + getRoomNumber()|     +-----------------+
-| + getType()     |     | + confirm()     |
-| + getPrice()    |     | + cancel()      |
-| + isAvailable() |     +-----------------+
-| + setAvailable()|
-+----------------+
-
-+----------------+
-|  RoomType      |
-+----------------+
-| SINGLE         |
-| DOUBLE         |
-| SUITE          |
-+----------------+
-
-+----------------+
-| BookingStatus  |
-+----------------+
-| PENDING        |
-| CONFIRMED      |
-| CANCELLED      |
-+----------------+
+Build:
+```bash
+mvn clean compile
 ```
 
-Relationships:
-- Hotel aggregates Room (1..*)
-- Hotel aggregates Booking (1..*)
-- Customer aggregates Booking (1..*)
-- Booking associates with Customer (1)
-- Booking associates with Room (1)
+Run tests:
+```bash
+mvn test
+```
+
+Run main demo:
+```bash
+mvn exec:java -Dexec.mainClass="com.hotelbooking.Main"
+```
+
+## Tests
+
+Unit tests are located under `src/test/java/com/hotelbooking`. Tests use JUnit 5 and include parameterized tests and AAA style assertions. They cover normal flows, boundary conditions and invalid inputs.
+
+## Notes for Submission
+
+- Ensure at least 5 meaningful commits on different dates (commit granularity and dates should be created from your machine / GitHub UI).
+- Include screenshots of test results and repository history for the assignment document.
+
+If you want, I can:
+- run the test suite (already executed and passing),
+- help prepare the screenshots and README additions for the submission,
+- or create a sample commit history branch to illustrate commit content.
