@@ -75,7 +75,6 @@ src/
 ### Defensive Programming
 - Input validation in constructors and methods
 - Null checks with descriptive error messages
-- Illegal state prevention
 - Exception handling with appropriate exception types
 
 ### Testing Strategy
