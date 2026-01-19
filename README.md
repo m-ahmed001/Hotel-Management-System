@@ -1,4 +1,4 @@
-# Hotel Booking System
+# Hotel Booking Systems
 
 A Java-based hotel booking system implemented following object-oriented design principles, clean code practices, defensive programming techniques, and industry-standard testing strategies.
 
