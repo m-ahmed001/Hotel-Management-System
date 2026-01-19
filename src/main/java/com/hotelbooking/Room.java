@@ -21,6 +21,7 @@ public class Room {
         this.type = RoomType.SINGLE;
     }
 
+    
     public Room(int number, RoomType type) {
         if (number <= 0) throw new IllegalArgumentException("Room number invalid");
         if (type == null) throw new IllegalArgumentException("RoomType required");

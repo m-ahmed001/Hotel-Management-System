@@ -7,7 +7,8 @@ class RoomTest {
 
     @Test
     void shouldCreateValidRoom() {
-        // Arrange & Act
+        // Arrange &Act
+
         Room room = new Room(101);
 
         // Assert
