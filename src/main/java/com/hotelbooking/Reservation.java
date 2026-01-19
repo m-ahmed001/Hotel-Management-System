@@ -10,7 +10,7 @@ public class Reservation {
         this.reservationDate = LocalDate.now();
     }
 
-    public LocalDate reservationDate() {
+    public LocalDate getReservationDate() {
         return reservationDate;
 }
 
